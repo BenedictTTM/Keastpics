@@ -6,6 +6,7 @@ import CustomCursor from "@/components/CustomCursor";
 import GrainOverlay from "@/components/GrainOverlay";
 import { CartProvider } from "@/context/CartContext";
 import Cart from "@/components/Cart";
+import Navbar from "@/components/Navbar";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -38,6 +39,7 @@ export default function RootLayout({
           <SmoothScroll>
             <CustomCursor />
             <GrainOverlay />
+            <Navbar />
             <Cart />
             {children}
           </SmoothScroll>

@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import Link from "next/link";
-import { useCart } from "@/context/CartContext";
 
 export default function AboutPage() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -12,23 +11,11 @@ export default function AboutPage() {
         target: containerRef,
         offset: ["start start", "end end"],
     });
-    const { items, openCart } = useCart();
 
     const y = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
 
     return (
         <main className="min-h-screen bg-background flex flex-col md:flex-row">
-            {/* Header */}
-            <header className="fixed top-0 left-0 w-full z-40 flex justify-between items-center px-8 py-6 mix-blend-difference">
-                <Link href="/" className="text-2xl font-light tracking-tighter text-text">KÆST</Link>
-                <div className="flex gap-8 text-sm font-light tracking-widest uppercase text-text">
-                    <Link href="/collection">Collection</Link>
-                    <button onClick={openCart} className="hover:text-accent transition-colors">
-                        Cart ({items.length})
-                    </button>
-                </div>
-            </header>
-
             {/* Left Column - Fixed Text */}
             <div className="w-full md:w-1/2 h-screen sticky top-0 flex items-center justify-center p-12 md:p-24 border-r border-border/10">
                 <div className="max-w-lg">

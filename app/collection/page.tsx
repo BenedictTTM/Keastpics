@@ -63,17 +63,6 @@ export default function CollectionPage() {
 
     return (
         <main className="min-h-screen bg-background pt-32 pb-20 px-4 md:px-12">
-            {/* Header */}
-            <header className="fixed top-0 left-0 w-full z-40 flex justify-between items-center px-8 py-6 mix-blend-difference">
-                <Link href="/" className="text-2xl font-light tracking-tighter text-text">KÆST</Link>
-                <div className="flex gap-8 text-sm font-light tracking-widest uppercase text-text">
-                    <span>Collection 01</span>
-                    <button onClick={openCart} className="hover:text-accent transition-colors">
-                        Cart ({items.length})
-                    </button>
-                </div>
-            </header>
-
             {/* Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-8 max-w-[1800px] mx-auto">
                 {PRODUCTS.map((product, index) => (

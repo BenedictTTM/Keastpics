@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -106,8 +107,38 @@ export default function Home() {
         </Link>
       </div>
 
+      {/* Campaign Preview Section */}
+      <section className="relative w-full min-h-screen bg-background py-32 px-4 md:px-12 flex flex-col items-center">
+        <div className="max-w-[1800px] w-full grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="relative aspect-[3/4] overflow-hidden group">
+            <Image
+              src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=1600&auto=format&fit=crop"
+              alt="Campaign 01"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105 grayscale hover:grayscale-0"
+            />
+          </div>
+          <div className="relative aspect-[3/4] overflow-hidden group md:mt-32">
+            <Image
+              src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1600&auto=format&fit=crop"
+              alt="Campaign 02"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105 grayscale hover:grayscale-0"
+            />
+          </div>
+          <div className="relative aspect-[3/4] overflow-hidden group">
+            <Image
+              src="https://images.unsplash.com/photo-1515347619252-60a6bf4fffce?q=80&w=1600&auto=format&fit=crop"
+              alt="Campaign 03"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105 grayscale hover:grayscale-0"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Spacer for scroll */}
-      <div className="h-screen w-full bg-background" />
+      <div className="h-[20vh] w-full bg-background" />
     </main>
   );
 }
