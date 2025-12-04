@@ -1,65 +1,113 @@
-import Image from "next/image";
+"use client";
+
+import { useRef, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, 400]); // Parallax effect
+  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+
+  useEffect(() => {
+    // GSAP animations for entrance
+    const tl = gsap.timeline();
+
+    tl.fromTo(
+      textRef.current,
+      { opacity: 0, y: 100 },
+      { opacity: 1, y: 0, duration: 1.5, ease: "power4.out", delay: 0.5 }
+    );
+
+    tl.fromTo(
+      ".hero-subtext",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
+      "-=1"
+    );
+
+    // Video parallax
+    if (videoRef.current) {
+      gsap.to(videoRef.current, {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+        y: 200,
+        scale: 1.1,
+      });
+    }
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main ref={containerRef} className="relative w-full min-h-[200vh] bg-background">
+      {/* Hero Section */}
+      <section className="relative h-[140vh] w-full overflow-hidden flex flex-col items-center justify-center">
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black/40 z-10" /> {/* Vignette/Overlay */}
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-60"
+          >
+            <source src="https://cdn.coverr.co/videos/coverr-walking-in-a-dark-hallway-4364/1080p.mp4" type="video/mp4" />
+            {/* Fallback/Placeholder video - dark, moody, cinematic */}
+          </video>
+        </div>
+
+        {/* Hero Content */}
+        <motion.div
+          style={{ y, opacity }}
+          className="relative z-20 flex flex-col items-center text-center mix-blend-difference"
+        >
+          <h1
+            ref={textRef}
+            className="text-[120px] md:text-[280px] font-extralight leading-none tracking-tighter text-text select-none"
+          >
+            KÆST
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="hero-subtext mt-8 text-lg md:text-2xl font-light tracking-[0.2em] text-text/80 uppercase">
+            Copenhagen · MMXXV
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
+        >
+          <div className="h-16 w-[1px] bg-gradient-to-b from-transparent via-text/50 to-transparent" />
+        </motion.div>
+      </section>
+
+      {/* Enter CTA - Pinned at bottom of first viewport effectively, or just below */}
+      <div className="absolute top-[100vh] left-0 w-full flex justify-center py-20 z-30 pointer-events-none">
+        <Link href="/collection" className="pointer-events-auto group flex flex-col items-center gap-4">
+          <span className="h-[1px] w-12 bg-text group-hover:bg-accent transition-colors duration-300" />
+          <span className="text-sm font-light tracking-widest uppercase text-text group-hover:text-accent transition-colors duration-300">
+            Enter
+          </span>
+        </Link>
+      </div>
+
+      {/* Spacer for scroll */}
+      <div className="h-screen w-full bg-background" />
+    </main>
   );
 }
