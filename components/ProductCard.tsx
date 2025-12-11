@@ -44,21 +44,33 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
           />
         </motion.div>
 
-        {/* Raw Overlay */}
-        <div className="absolute inset-0 p-4 flex flex-col justify-between opacity-100 mix-blend-difference text-[#E8E9EB] pointer-events-none">
-          <div className="flex justify-between items-start">
-            <span className="font-mono text-[10px] uppercase tracking-widest bg-black/50 backdrop-blur-sm px-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-              ID: {product.id.padStart(3, '0')}
-            </span>
-            <span className="font-mono text-[10px uppercase tracking-widest bg-accent/80 px-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              {product.price}
-            </span>
+        {/* Raw Overlay - Tech Specs */}
+        <div className="absolute inset-0 p-4 flex flex-col justify-between z-10 pointer-events-none mix-blend-difference text-white">
+
+          {/* Header Specs */}
+          <div className="flex justify-between items-start text-[10px] font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="flex flex-col gap-1">
+              <span>REF: {product.id.padStart(4, '0')}</span>
+              <span>CAT: {product.tag || 'N/A'}</span>
+            </div>
+            <div className="flex flex-col gap-1 text-right">
+              <span>{product.price}</span>
+              <span>IN_STOCK</span>
+            </div>
           </div>
 
-          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            <h3 className="font-sans font-bold uppercase text-2xl md:text-3xl leading-none tracking-tighter">
+          {/* Center Crosshair (Only visible on hover) */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/50" />
+            <div className="absolute left-1/2 top-0 h-full w-[1px] bg-white/50" />
+          </div>
+
+          {/* Footer Title */}
+          <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+            <h3 className="font-sans font-black uppercase text-3xl md:text-4xl leading-[0.85] tracking-tighter">
               {product.name}
             </h3>
+            <div className="h-[1px] w-0 group-hover:w-full bg-white mt-2 transition-all duration-700 delay-100" />
           </div>
         </div>
 

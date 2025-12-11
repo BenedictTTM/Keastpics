@@ -65,6 +65,7 @@ const FILTERS = ["ALL", "EVENING", "DAYWEAR", "TAILORING", "CONCEPTUAL"];
 export default function CollectionPage() {
     const [selectedProduct, setSelectedProduct] = useState<typeof PRODUCTS[0] | null>(null);
     const [activeFilter, setActiveFilter] = useState("ALL");
+    const [showArchive, setShowArchive] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const { items, openCart } = useCart();
 
@@ -72,25 +73,63 @@ export default function CollectionPage() {
         ? PRODUCTS
         : PRODUCTS.filter(p => p.tag === activeFilter);
 
+    // Chaos Grid Inserts
+    const chaosInserts = [
+        {
+            index: 2,
+            content: (
+                <div className="w-full h-full min-h-[400px] flex items-center justify-center border border-accent/20 p-8">
+                    <div className="text-center">
+                        <p className="font-mono text-xs text-accent mb-4">[ SYSTEM_NOTE ]</p>
+                        <p className="text-2xl font-bold uppercase max-w-sm mx-auto leading-tight">
+                            "Structure is an illusion. We only see what we are programmed to recognize."
+                        </p>
+                    </div>
+                </div>
+            )
+        },
+        {
+            index: 5,
+            content: (
+                <div className="w-full h-full min-h-[300px] bg-accent/5 flex flex-col justify-between p-4 mix-blend-difference">
+                    <span className="font-mono text-[10px] uppercase">Raw_Material_Log.txt</span>
+                    <div className="font-mono text-xs opacity-70 break-all">
+                        0x1A2B3C4D5E6F7G8H9I0J1K2L3M4N5O6P7Q8R9S0T1U2V3W4X5Y6Z
+                        <br />
+                        &gt;&gt; DECRYPTING...
+                        <br />
+                        &gt;&gt; ERROR: ENCRYPTION_TOO_STRONG
+                    </div>
+                </div>
+            )
+        }
+    ];
+
+    const getInsert = (idx: number) => chaosInserts.find(i => i.index === idx)?.content;
+
     return (
         <main className="min-h-screen bg-background text-foreground pt-32 pb-20 px-4 md:px-12 selection:bg-accent selection:text-black">
 
             {/* Terminal Header */}
-            <div className="mb-24 border-b border-border/40 pb-8 flex flex-col md:flex-row justify-between items-end gap-8">
+            <div className="mb-24 border-b border-border/40 pb-8 flex flex-col md:flex-row justify-between items-end gap-8 bg-background/80 backdrop-blur-sm sticky top-0 z-30 pt-8 mt-[-8rem]">
                 <div>
-                    <span className="font-mono text-xs text-accent mb-2 block">[ COLLECTION_003 ]</span>
+                    <span className="font-mono text-xs text-accent mb-2 block animate-pulse">&gt; COLLECTION_003_INIT</span>
                     <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter">
-                        Raw Structure.
+                        Raw <span className="text-stroke-1 text-transparent stroke-current">Structure.</span>
                     </h1>
                 </div>
 
                 {/* Terminal Filter Bar */}
-                <div className="font-mono text-sm uppercase flex flex-wrap gap-6">
+                <div className="font-mono text-xs md:text-sm uppercase flex flex-wrap gap-4 items-center">
+                    <span className="text-muted mr-4 hidden md:inline">FILTER_MODE:</span>
                     {FILTERS.map((filter) => (
                         <button
                             key={filter}
                             onClick={() => setActiveFilter(filter)}
-                            className={`hover:text-accent transition-colors before:content-['['] before:mr-1 after:content-[']'] after:ml-1 ${activeFilter === filter ? 'text-accent' : 'text-muted'}`}
+                            className={`px-3 py-1 border transition-all duration-300 ${activeFilter === filter
+                                ? 'border-accent bg-accent text-black'
+                                : 'border-white/10 hover:border-white/50 text-muted hover:text-foreground'
+                                }`}
                         >
                             {filter}
                         </button>
@@ -105,18 +144,62 @@ export default function CollectionPage() {
                     const colSpan = index % 3 === 0 ? "md:col-span-6" : index % 3 === 1 ? "md:col-span-5" : "md:col-span-4 md:col-start-8";
                     const marginTop = index % 2 === 0 ? "mt-0" : "md:mt-32";
 
+                    const insert = getInsert(index);
+
                     return (
-                        <div
-                            key={product.id}
-                            className={`${colSpan} ${marginTop}`}
-                        >
-                            <ProductCard
-                                product={product}
-                                onClick={(p) => setSelectedProduct(p)}
-                            />
-                        </div>
+                        <>
+                            {/* Render Insert if exists for this index (before the product) */}
+                            {insert && (
+                                <div className="md:col-span-4 md:col-start-2 flex items-center justify-center my-12 md:my-0">
+                                    {insert}
+                                </div>
+                            )}
+
+                            <div
+                                key={product.id}
+                                className={`${colSpan} ${marginTop}`}
+                            >
+                                <ProductCard
+                                    product={product}
+                                    onClick={(p) => setSelectedProduct(p)}
+                                />
+                            </div>
+                        </>
                     )
                 })}
+            </div>
+
+            {/* Archive Section - Hidden until unlocked */}
+            <div className="mt-40 border-t border-dashed border-white/20 pt-16">
+                <div className="flex flex-col items-center justify-center text-center">
+                    <p className="font-mono text-xs text-muted mb-4 uppercase tracking-widest">[ RESTRICTED AREA ]</p>
+
+                    {!showArchive ? (
+                        <button
+                            onClick={() => setShowArchive(true)}
+                            className="group relative px-8 py-4 bg-white/5 border border-white/10 text-xl font-bold uppercase tracking-widest hover:bg-accent hover:text-black transition-all duration-500 overflow-hidden"
+                        >
+                            <span className="relative z-10">Access Archive</span>
+                            <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                        </button>
+                    ) : (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            className="w-full mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
+                        >
+                            {[1, 2, 3, 4].map((i) => (
+                                <div key={i} className="aspect-square bg-white/5 border border-white/5 flex items-center justify-center group cursor-not-allowed">
+                                    <span className="font-mono text-xs text-muted group-hover:text-red-500 transition-colors">
+                                        [ FILE_CORRUPTED ]
+                                        <br />
+                                        ARCHIVE_00{i}
+                                    </span>
+                                </div>
+                            ))}
+                        </motion.div>
+                    )}
+                </div>
             </div>
 
             {/* Modal */}
