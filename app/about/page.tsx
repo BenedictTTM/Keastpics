@@ -30,13 +30,13 @@ export default function AboutPage() {
                     <div className="flex gap-8">
                         <span className="flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                            SYS.ONLINE
+                            CAM.ONLINE
                         </span>
                     </div>
                     {/* Center ticker or decoration */}
                     <div className="hidden md:block w-32 h-[1px] bg-white/10 mt-2"></div>
                     <div>
-                        <span>[ SECURE ]</span>
+                        <span>[ REC ]</span>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@ export default function AboutPage() {
                     {/* Line 1: BUREAU */}
                     <div className="relative leading-[0.75] tracking-tighter hover:scale-[1.02] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
                         <TextReveal mode="char" trigger="mount" className="text-[18vw] md:text-[14vw] font-black uppercase text-white block">
-                            BUREAU
+                            ARCHIVE
                         </TextReveal>
                     </div>
 
@@ -72,14 +72,14 @@ export default function AboutPage() {
                     {/* Line 2: FLESH */}
                     <div className="relative leading-[0.75] tracking-tighter hover:scale-[1.02] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
                         <TextReveal mode="char" trigger="mount" className="text-[18vw] md:text-[14vw] font-black uppercase text-white block">
-                            FLESH.
+                            LIGHT.
                         </TextReveal>
                     </div>
 
                     {/* Editorial Description */}
                     <div className="mt-12 max-w-sm md:max-w-md text-center opacity-0 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 fill-mode-forwards">
                         <p className="font-mono text-[10px] md:text-xsd text-muted/60 uppercase tracking-[0.2em] leading-loose">
-                            Digital Brutality <span className="text-accent mx-2">//</span> Organic Decay <br />
+                            Visual Brutalism <span className="text-accent mx-2">//</span> Captured Time <br />
                         </p>
                     </div>
                 </div>
@@ -87,8 +87,8 @@ export default function AboutPage() {
                 {/* Bottom Data Bar */}
                 <div className="absolute bottom-0 w-full p-4 md:p-8 flex justify-between items-end font-mono text-[10px] text-muted/40 uppercase z-40">
                     <div className="flex flex-col gap-1 text-left">
-                        <span>COORDS: 35.6895° N</span>
-                        <span>SECTOR: 7G [LOCKED]</span>
+                        <span>ISO: 3200</span>
+                        <span>APERTURE: F/1.4</span>
                     </div>
                     {/* Scroll Indicator */}
                     <div className="absolute left-1/2 bottom-8 transform -translate-x-1/2 flex flex-col items-center animate-bounce duration-[2000ms]">
@@ -96,8 +96,8 @@ export default function AboutPage() {
                         <div className="w-[1px] h-8 bg-gradient-to-b from-accent to-transparent"></div>
                     </div>
                     <div className="flex flex-col items-end gap-1 text-right">
-                        <span>INITIATE_SEQUENCE</span>
-                        <span>V.3.1.0</span>
+                        <span>INITIATE_CAPTURE</span>
+                        <span>V.4.0.2</span>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@ export default function AboutPage() {
                     <div className="py-12 md:py-24 max-w-[90vw] mx-auto">
                         <span className="font-mono text-xs text-accent mb-8 block">[ 001_PHILOSOPHY ]</span>
                         <TextReveal className="text-3xl md:text-6xl lg:text-7xl font-bold uppercase leading-[1.1] tracking-tight">
-                            We do not design for the gallery. We design for the flesh. A raw dialogue between structure and self, noise and silence. Kæst is the armor for the modern obscure.
+                            We do not capture subjects. We capture moments. A raw dialogue between shutter and subject, light and void. Kæst is the lens for the modern obscure.
                         </TextReveal>
                     </div>
 
@@ -120,7 +120,7 @@ export default function AboutPage() {
                         <div className="md:col-span-7 relative group">
                             <div className="aspect-[4/5] relative overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=1955&auto=format&fit=crop"
+                                    src="https://images.unsplash.com/photo-1499417267106-45cebb7187c9?w=1000&auto=format&fit=crop&q=60"
                                     alt="Origin"
                                     fill
                                     className="object-cover"
@@ -134,10 +134,10 @@ export default function AboutPage() {
                                 <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight">Origin</h2>
                             </div>
                             <p className="text-lg text-muted leading-relaxed">
-                                Born from a collision of brutalist architecture and organic form. We replicate the chaos of the natural world through precision engineering.
+                                Born from the streets and the shadows. We document the chaos of the urban world through precision framing.
                             </p>
                             <div className="mt-8 font-mono text-[10px] text-accent border border-accent/20 px-2 py-1 inline-block">
-                                REF: BRUTAL_NATURE_01
+                                REF: RAW_LIGHT_01
                             </div>
                         </div>
                     </section>
@@ -150,13 +150,13 @@ export default function AboutPage() {
                                 <span className="font-mono text-accent text-sm">[02]</span>
                             </div>
                             <p className="text-lg text-muted leading-relaxed">
-                                Deconstruction is creation. We strip away functionality to find the aesthetic core, then rebuild it stronger. Every seam is a scar.
+                                The edit is the creation. We strip away the unnecessary noise to find the visual core, then enhance it. Every frame is a statement.
                             </p>
                         </div>
                         <div className="md:col-span-7 order-1 md:order-2 relative group">
                             <div className="aspect-video relative overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1617293851568-bac1f3af7e09?w=1600&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFmcmljYW4lMjBmYXNoaW9ufGVufDB8fDB8fHww"
+                                    src="https://plus.unsplash.com/premium_photo-1727967191702-785af4e14a6d?w=600&auto=format&fit=crop&q=60"
                                     alt="Process"
                                     fill
                                     className="object-cover"

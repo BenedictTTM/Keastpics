@@ -26,7 +26,7 @@ export default function Navbar() {
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex gap-12 text-sm font-light tracking-widest uppercase">
                     <Link href="/collection" className="hover:text-red-500 transition-colors duration-300">
-                        Collection
+                        Portfolio
                     </Link>
                     <Link href="/about" className="hover:text-red-500 transition-colors duration-300">
                         About
@@ -68,7 +68,7 @@ export default function Navbar() {
                                 onClick={toggleMenu}
                                 className="text-5xl font-black uppercase tracking-tighter text-white hover:text-accent transition-colors"
                             >
-                                Collection
+                                Portfolio
                             </Link>
                             <Link
                                 href="/about"

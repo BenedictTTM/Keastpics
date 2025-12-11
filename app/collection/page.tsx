@@ -8,59 +8,59 @@ import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import Footer from "@/components/Footer";
 
-// Dummy Data
+// Product Data (Prints/Series)
 const PRODUCTS = [
     {
         id: "1",
-        name: "Serafina Gown",
-        price: "€2,400",
-        image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1983&auto=format&fit=crop",
-        description: "A floor-length silk gown in deep midnight blue. Featuring a structured bodice and fluid drape, inspired by the night sky over the Savannah.",
-        tag: "EVENING"
+        name: "Neon Nights",
+        price: "$250",
+        image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&auto=format&fit=crop&q=60",
+        description: "A limited edition print series capturing the vibrant neon pulse of late-night Tokyo. Printed on archival metallic paper.",
+        tag: "STREET"
     },
     {
         id: "2",
-        name: "Zaria Knit Dress",
-        price: "€890",
-        image: "https://images.unsplash.com/photo-1663044023009-cfdb6dd6b89c?q=80&w=707&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        description: "Hand-woven cotton blend with intricate patterns. A modern interpretation of traditional weaving techniques, offering comfort and heritage.",
-        tag: "DAYWEAR"
+        name: "Silent Dunes",
+        price: "$300",
+        image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&auto=format&fit=crop&q=60",
+        description: "Minimalist composition of shifting sands and shadows. Captured in the Namib Desert. Fine art matte print.",
+        tag: "LANDSCAPE"
     },
     {
         id: "3",
-        name: "Kente Structure",
-        price: "€1,100",
-        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1934&auto=format&fit=crop",
-        description: "Bold architectural dress utilizing Kente-inspired geometric patterns. A statement piece that bridges the gap between art and fashion.",
+        name: "Concrete Void",
+        price: "$200",
+        image: "https://plus.unsplash.com/premium_photo-1727967194388-d838e1f37dec?w=600&auto=format&fit=crop&q=60",
+        description: "Architectural study of brutalist structures in Eastern Europe. Focusing on geometry and raw texture.",
         tag: "CONCEPTUAL"
     },
     {
         id: "4",
-        name: "Obsidian Silk",
-        price: "€1,650",
-        image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1587&auto=format&fit=crop",
-        description: "Pure black silk slip dress with asymmetric detailing. Minimalist luxury defined by the quality of the fabric and the precision of the cut.",
-        tag: "EVENING"
+        name: "Midnight Soul",
+        price: "$450",
+        image: "https://plus.unsplash.com/premium_photo-1727967194155-ed1b295c76ae?w=600&auto=format&fit=crop&q=60",
+        description: "Intimate portrait series exploring the human condition in low light. Emotional, raw, and unfiltered.",
+        tag: "PORTRAIT"
     },
     {
         id: "5",
-        name: "Terra Blazer Dress",
-        price: "€1,800",
-        image: "https://images.unsplash.com/photo-1589156280159-27698a70f29e?q=80&w=1887&auto=format&fit=crop",
-        description: "Earthy tones in a structured blazer dress silhouette. Sharp tailoring meets organic warmth.",
-        tag: "TAILORING"
+        name: "Urban Decay",
+        price: "$280",
+        image: "https://plus.unsplash.com/premium_photo-1727967191702-785af4e14a6d?w=600&auto=format&fit=crop&q=60",
+        description: "The beauty of forgotten places. Textures of rust, peeling paint, and reclamation by nature.",
+        tag: "STREET"
     },
     {
         id: "6",
-        name: "Solaris Maxi",
-        price: "€1,450",
-        image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=1946&auto=format&fit=crop",
-        description: "Vibrant yellow maxi dress with voluminous sleeves. Capturing the energy of the sun and the joy of movement.",
-        tag: "DAYWEAR"
+        name: "Solar Flare",
+        price: "$320",
+        image: "https://images.unsplash.com/photo-1499417267106-45cebb7187c9?w=1000&auto=format&fit=crop&q=60",
+        description: "High-contrast study of natural light and lens flares. Abstract and energetic.",
+        tag: "EDITORIAL"
     },
 ];
 
-const FILTERS = ["ALL", "EVENING", "DAYWEAR", "TAILORING", "CONCEPTUAL"];
+const FILTERS = ["ALL", "PORTRAIT", "LANDSCAPE", "EDITORIAL", "STREET", "CONCEPTUAL"];
 
 export default function CollectionPage() {
     const [selectedProduct, setSelectedProduct] = useState<typeof PRODUCTS[0] | null>(null);
@@ -80,9 +80,9 @@ export default function CollectionPage() {
             content: (
                 <div className="w-full h-full min-h-[400px] flex items-center justify-center border border-accent/20 p-8">
                     <div className="text-center">
-                        <p className="font-mono text-xs text-accent mb-4">[ SYSTEM_NOTE ]</p>
+                        <p className="font-mono text-xs text-accent mb-4">[ CAPTURE_NOTE ]</p>
                         <p className="text-2xl font-bold uppercase max-w-sm mx-auto leading-tight">
-                            "Structure is an illusion. We only see what we are programmed to recognize."
+                            "Light is not what we see. It is what allows us to see the truth."
                         </p>
                     </div>
                 </div>
@@ -98,9 +98,9 @@ export default function CollectionPage() {
             {/* Terminal Header */}
             <div className="mb-24 border-b border-border/40 pb-8 flex flex-col md:flex-row justify-between items-end gap-8 bg-background/80 backdrop-blur-sm md:sticky md:top-0 z-30 pt-8 mt-[-8rem]">
                 <div>
-                    <span className="font-mono text-xs text-accent mb-2 block animate-pulse">&gt; COLLECTION_003_INIT</span>
+                    <span className="font-mono text-xs text-accent mb-2 block animate-pulse">&gt; ARCHIVE_004_LOADED</span>
                     <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter">
-                        Raw <span className="text-stroke-1 text-transparent stroke-current">Structure.</span>
+                        Visual <span className="text-stroke-1 text-transparent stroke-current">Capture.</span>
                     </h1>
                 </div>
 
@@ -158,34 +158,34 @@ export default function CollectionPage() {
                 <div className="flex flex-col gap-12">
                     <div className="flex flex-col md:flex-row justify-between items-end gap-4">
                         <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter">
-                            Curated <span className="text-accent">Edits</span>
+                            Curated <span className="text-accent">Series</span>
                         </h2>
                         <p className="font-mono text-xs text-muted max-w-sm">
-                            Explore our collections by category. Each piece is a unique narrative of African heritage and modern design.
+                            Explore the archive by category. Each print is a window into a captured moment of time and space.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         {[
                             {
-                                title: "Evening",
-                                filter: "EVENING",
-                                image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1983&auto=format&fit=crop"
+                                title: "Portrait",
+                                filter: "PORTRAIT",
+                                image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&auto=format&fit=crop&q=60"
                             },
                             {
-                                title: "Daywear",
-                                filter: "DAYWEAR",
-                                image: "https://images.unsplash.com/photo-1663044023009-cfdb6dd6b89c?q=80&w=707&auto=format&fit=crop"
+                                title: "Street",
+                                filter: "STREET",
+                                image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&auto=format&fit=crop&q=60"
                             },
                             {
-                                title: "Tailoring",
-                                filter: "TAILORING",
-                                image: "https://images.unsplash.com/photo-1589156280159-27698a70f29e?q=80&w=1887&auto=format&fit=crop"
+                                title: "Landscape",
+                                filter: "LANDSCAPE",
+                                image: "https://plus.unsplash.com/premium_photo-1727967194388-d838e1f37dec?w=600&auto=format&fit=crop&q=60"
                             },
                             {
-                                title: "Conceptual",
-                                filter: "CONCEPTUAL",
-                                image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1934&auto=format&fit=crop"
+                                title: "Editorial",
+                                filter: "EDITORIAL",
+                                image: "https://plus.unsplash.com/premium_photo-1727967194155-ed1b295c76ae?w=600&auto=format&fit=crop&q=60"
                             }
                         ].map((category, index) => (
                             <button

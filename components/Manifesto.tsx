@@ -56,7 +56,7 @@ export default function Manifesto() {
                     ref={textRef}
                     className="text-4xl md:text-[5vw] leading-[1.1] tracking-tighter text-muted text-justify-justify break-words uppercase"
                 >
-                    We do not design for the gallery. We design for the flesh. Clothing that is not just worn, but inhabited. A raw dialogue between structure and self, noise and silence. Kæst is the armor for the modern obscure.
+                    We do not just capture images. We capture souls. A raw dialogue between light and shadow, silence and noise. Kæst is the lens for the modern obscure.
                 </p>
 
                 <div className="mt-32 flex justify-between items-end border-t border-white/10 pt-8">

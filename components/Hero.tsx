@@ -88,7 +88,7 @@ export default function Hero() {
                     KÆST
                 </h1>
                 <div className="mt-8 flex justify-between w-full max-w-4xl text-xs md:text-sm font-mono tracking-widest uppercase text-[#E8E9EB]/70">
-                    <span>Est. 2024</span>
+                    <span>Est. 2024 • Visual Arts</span>
                     <span className="animate-pulse">● Live</span>
                     <span>Accra, GH</span>
                 </div>
