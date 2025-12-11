@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import ProductCard from "@/components/ProductCard";
 import ProductModal from "@/components/ProductModal";
 import Link from "next/link";
-import { useCart } from "@/context/CartContext";
+// import { useCart } from "@/context/CartContext";
 import Footer from "@/components/Footer";
 
 // Product Data (Prints/Series)
@@ -67,7 +67,7 @@ export default function CollectionPage() {
     const [activeFilter, setActiveFilter] = useState("ALL");
     const [showArchive, setShowArchive] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
-    const { items, openCart } = useCart();
+    // const { items, openCart } = useCart();
 
     const filteredProducts = activeFilter === "ALL"
         ? PRODUCTS
